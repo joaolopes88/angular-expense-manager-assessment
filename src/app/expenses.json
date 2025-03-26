@@ -1,0 +1,39 @@
+{
+    "expenses":[
+        {
+            "id":0,
+            "label":"Test expense alpha",
+            "description":"Test description",
+            "date":"25/03/2025",
+            "value":10.0
+        },
+        {
+            "id":1,
+            "label":"Test expense beta",
+            "description":"Test description",
+            "date":"25/03/2025",
+            "value":10.0
+        },
+        {
+            "id":2,
+            "label":"Test expense gamma",
+            "description":"Test description",
+            "date":"25/03/2025",
+            "value":10.0
+        },
+        {
+            "id":3,
+            "label":"Test expense delta",
+            "description":"Test description",
+            "date":"25/03/2025",
+            "value":10.0
+        },
+        {
+            "id":4,
+            "label":"Test expense epsilon",
+            "description":"Test description",
+            "date":"25/03/2025",
+            "value":10.0
+        }
+    ]
+}

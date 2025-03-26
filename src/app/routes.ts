@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 const routeConfig: Routes = [
   {
     path: '',
