@@ -5,6 +5,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ExpenseService } from '../../services/expense.service';
 
 @Component({
   selector: 'app-header',
@@ -16,25 +17,35 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
+
+  constructor (private expenseService:ExpenseService){}
+
   categoryList = [
-    { value: 'category1', display: 'Category 1' },
-    { value: 'category2', display: 'Category 2' },
-    { value: 'category3', display: 'Category 3' }
+    { value: 'food', display: 'Food' },
+    { value: 'clothing', display: 'Clothing' },
+    { value: 'games', display: 'Games' }
   ];
 
   public onChange(){
     console.log('hello');
   }
 
-  public dateUpdate (){
-    console.log('date updated');
-  }
-
-  public dateInput(){
-    console.log('date input');
-  }
-
-  public categoryUpdate(event:any){
+  public startDateUpdate (event:any){
     console.log(event.value);
+    this.expenseService.setFilter({start_date:event.value});
+  }
+
+  public endDateUpdate(event:any){
+    this.expenseService.setFilter({end_date:event.value});
+  }
+
+  public onCategoryChange(event:any){
+    console.log(event.value);
+    this.expenseService.setFilter({category:event.value});
+  }
+
+  public onLabelChange(event:any){
+    console.log(event.value);
+    this.expenseService.setFilter({label:event.value});
   }
 }

@@ -3,5 +3,6 @@ export interface Expense {
     label:string,
     description:string,
     date:string,
-    value:number
+    value:number,
+    category:string
 }

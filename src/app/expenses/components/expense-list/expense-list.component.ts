@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ExpenseService } from '../../services/expense.service';
-import { Expense } from '../../interfaces/expense';
 import { ExpenseComponent } from "../expense/expense/expense.component";
 import { CommonModule } from '@angular/common';
+import { combineLatest, map } from 'rxjs';
 
 @Component({
   selector: 'app-expense-list',
@@ -12,11 +12,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './expense-list.component.css'
 })
 export class ExpenseListComponent {
-  expenseList:Expense[] = [];
+
+  filteredItems$ = combineLatest([
+    this.expenseService.expenses$,
+    this.expenseService.filter$
+  ]).pipe(
+    map(([expenses, filter]) => this.expenseService.getFilteredItems(expenses, filter))
+  );
 
   constructor (private expenseService:ExpenseService){
-    this.expenseService.getAllExpenses().then((jsonExpenseList:Expense[]) => {
-      this.expenseList = jsonExpenseList;
-    });
+    console.log("ExpenseListComponent constructor")
   }
 }
