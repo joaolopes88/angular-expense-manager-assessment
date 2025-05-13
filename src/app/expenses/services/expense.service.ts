@@ -11,18 +11,24 @@ export class ExpenseService {
     private expensesSubject = new BehaviorSubject<Expense[]>([]);
     expenses$ = this.expensesSubject.asObservable();
 
-    private filterSubject = new BehaviorSubject<FilterState>({
+    private initialFilter = {
         label: '',
         category: '',
         start_date: new Date('01/01/1990'),
         end_date: new Date('01/01/2999')
-    });
+    }
+
+    private filterSubject = new BehaviorSubject<FilterState>(this.initialFilter);
 
     filter$ = this.filterSubject.asObservable();
 
     setFilter(partial: Partial<FilterState>) {
         const current = this.filterSubject.getValue();
         this.filterSubject.next({ ...current, ...partial });
+    }
+
+    resetFilter(){
+        this.filterSubject.next(this.initialFilter)
     }
 
     getFilteredItems(items: Expense[], filter: FilterState) {

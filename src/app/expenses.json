@@ -14,7 +14,7 @@
             "description":"This is clothing beta description",
             "date":"2025-03-25",
             "value":52.0,
-            "category":"This is clothing alpha description"
+            "category":"clothing"
         },
         {
             "id":2,
@@ -38,7 +38,7 @@
             "description":"This is game alpha description",
             "date":"2025-03-25",
             "value":79.99,
-            "category":"food"
+            "category":"games"
         },
          {
             "id":5,
@@ -46,7 +46,7 @@
             "description":"This is game beta description",
             "date":"2024-03-25",
             "value":49.99,
-            "category":"food"
+            "category":"games"
         }
     ]
 }
