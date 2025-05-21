@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ExpenseService } from '../../services/expense.service';
+import { CATEGORY_LIST } from '../../../settings.contants';
 
 @Component({
   selector: 'app-header',
@@ -20,15 +21,7 @@ export class HeaderComponent {
 
   constructor (private expenseService:ExpenseService){}
 
-  categoryList = [
-    { value: 'food', display: 'Food' },
-    { value: 'clothing', display: 'Clothing' },
-    { value: 'games', display: 'Games' }
-  ];
-
-  public onChange(){
-    console.log('hello');
-  }
+  categoryList = CATEGORY_LIST;
 
   public startDateUpdate (event:any){
     console.log(event.value);
@@ -47,5 +40,9 @@ export class HeaderComponent {
   public onLabelChange(event:any){
     console.log(event.value);
     this.expenseService.setFilter({label:event.value});
+  }
+
+  public resetFilter(){
+    this.expenseService.resetFilter()
   }
 }

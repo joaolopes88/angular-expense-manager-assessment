@@ -1,0 +1,29 @@
+<article class="expense-detail-main">
+    <section>
+        <h2>{{ expense?.label }}</h2>
+    </section>
+    <section>
+        <form *ngIf="expense" (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+            <div class="form">
+                <mat-form-field appearance=fill>
+                    <input type="text" matInput name="label" [(ngModel)]="expense.label" placeholder="Label" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <textarea matInput name="description" [(ngModel)]="expense.description" placeholder="Description"
+                        required></textarea>
+                </mat-form-field>
+                <mat-form-field appearance=fill>
+                    <input matInput type="number" name="value" [(ngModel)]="expense.value" placeholder="Value"
+                        required />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Select category" [(ngModel)]="expense.category" name="category">
+                        <mat-option *ngFor="let category of categoryList"
+                            [value]="category.value">{{category.display}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button type="submit" [disabled]="expenseForm.invalid">Submit</button>
+        </form>
+    </section>
+</article>
